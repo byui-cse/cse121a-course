@@ -1,0 +1,82 @@
+<!-- uses https://highlightjs.org/
+-->
+
+<html>
+
+<head>
+	<script type="text/javascript">
+		var codeType = "Clojure"
+	</script>
+	<script src="../../../site/highlight.pack.js"></script>
+	<link rel="stylesheet" href="../../../site/highlight_styles/xcode.css">
+	<link rel="stylesheet" href="../../../site/weekly.css">
+	<script type="text/javascript" src="../../../site/weekly.js"></script>
+	
+
+</head>
+
+<body onload="fetchSource()">
+<div class="hero-image">
+  <div class="hero-text">
+    <h1>CSE 121a: Week 05</h1>
+    <p>Controlling Your Code</p>
+  </div>
+</div>
+	<h1>Choice Making and Computational Flow</h1>
+	<h3>Logic Used in Clojure</h3>
+	<p>Clojure, and most other computing languages use Boolean Logic. In other words, something is true or it is false. 
+	There are other types of logic. For example, there are ternary (three value) logics where possible values are true, false, and maybe. 
+	You use this ternary type of logic in your life all the time. Someone asks, "Do can you help me next week?" Replying 
+	in English, you have three options. Yes (true)...if you know you can and will. No (false)...if you know you can't or won't. 
+	Maybe...if you are unsure if you can or will. See? Three possible values thus ternary logic rather than Boolean Logic. </p>
+	<p>Clojure uses Binary Logic. Something is either true or false. The 'maybe' value (nil), in Clojure, is treated as false.</p>
+	<h3>When-Let and If-Let</h3>
+	<h4>If-Let</h4>
+	<p>Clojure has a construct you may not have seen before...it's called if-let. It allows you to conditionally define a named 
+	value, and, if the named value is able to be defined, execute a code clause. It also includes a required else clause. In this 
+	example, a collection is filtered so that only the evens remain. Should there be no evens in the collection, the else clause 
+	is executed.</p>
+	<p><pre><code class="Clojure">(if-let [evens (seq (filterv even? coll))]
+    (println (str "Evens are: " evens))
+    (println "No evens"))
+</code>
+	</pre></p>
+	<h4>When-Let</h4>
+	<p>Sometimes, you don't need an alternative to the condition you are checking for. When this is the situation you find yourself in, 
+	you should use when-let rather than if-let. This example illustrates just such a situation. The function drop-first returns 
+	a collection that has the all the same elements as the one passed in, but without the first element. If the list is empty, 
+	drop-first returns nil.</p>
+	<p><pre><code class="Clojure">(defn drop-first [coll]
+  (when-let [s (seq coll)]
+    (rest s)))
+</code>
+	</pre></p>
+	<h3>Cond</h3>
+	<p>For those situations where you have more than one condition, each with a different result, you should use cond. This is a 
+	silly, naive example since the compare function already exists in Clojure.</p>
+<p><pre><code class="Clojure">(defn compare-nums [a b] 
+  (cond
+    (< a b) -1
+    (> a b)  1
+    :else    0))
+</code>
+	</pre></p>
+
+
+	<h3>When and If</h3>
+	<p>The if-let, when-let, and cond BIF's will fit nearly every need. So if using them solves your coding design problem, you should 
+	use them. In those rare situations where those three BIF's don't fit, Clojure provides you with when and if.</p>
+	<p>Here is an example using the when BIF to print an age if it is not nil.</p>
+<p><pre><code class="Clojure">(when (some? age)
+(println (str "You are " age ".")))
+</code>
+	</pre></p>
+<p>Here is an example of using the if BIF in the same situation.</p>
+	<p><pre><code class="Clojure">(if (some? age)
+(println (str "You are " age "."))
+(println (str "Oops. There is no age.")))
+</code>
+	</pre></p>
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+</body>
+</html>

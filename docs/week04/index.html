@@ -1,0 +1,231 @@
+<!-- uses https://highlightjs.org/
+-->
+
+<html>
+
+<head>
+	<script type="text/javascript">
+		var codeType = "C++"
+	</script>
+	<script src="../../../site/highlight.pack.js"></script>
+	<link rel="stylesheet" href="../../../site/highlight_styles/xcode.css">
+	<link rel="stylesheet" href="../../../site/weekly.css">
+	<script type="text/javascript" src="../../../site/weekly.js"></script>
+	
+
+</head>
+
+<body onload="fetchSource()">
+<div class="hero-image">
+  <div class="hero-text">
+    <h1>CSE 121a: Week 04</h1>
+    <p>Representing Data</p>
+  </div>
+</div>
+	<h1>Lists and Beyond</h1>
+	<p>Lists are wonderful things. If you need to keep several things together and in order so you can work with
+	them, a list is the way to go. Lists in Clojure, in additionto functions, are a fundimental type. Clojure is, after all, 
+	a LISP variant and LISP is short for LISt Processing.</p> 
+	<p>You have seen lists in 
+	the examples already. They begin with the '(' character and end with the ')' character. For example, here is a list of the first few 
+	integers.</p>
+
+<p><pre>
+	<code class="Clojure">(1 2 3 4 5 6 7)</code>
+</pre>
+</p>
+	<p>Here is another list.</p>
+<p><pre>
+	<code class="Clojure">(println "What????")</code>
+</pre>
+</p>
+	<p>"But wait a minute!", you say. "That's a call to the println function!" You are exactly right. Function calls are lists...
+		and if you examine the factorial function declaration from last week,</p>
+	<p><pre>
+	<code class="Clojure">(defn factorial
+  ([n] (factorial n 1)) 
+  ([n accumulator] 
+   (if (= n 0) accumulator 
+     (recur (dec n) (* accumulator n)))))</code></pre>
+	</p>
+	<p> you will discover that it, and all function declarations in Clojure, are lists inside of lists. That explains why there are so many 
+	parenthases.</p>
+	<h3>Vectors</h3>
+	<p>The data collection type known as a vector is similar to a list with one huge difference, if you are using a vector you can get access to a 
+	value directly using its index. This is very fast and something you can't do with a list. Here is an example of making a vector 
+	and eventually getting the 3rd item out.</p>
+<p><pre>
+<code class="Clojure">(def vec [0 -1 345 18])
+(vec 3)</code></pre>
+	</p>	
+	<p>When you run this code, (vec 3) returns 18. That's because Clojure follows a 0 based indexing scheme like most other languages. To 
+	get the value 345, you would write (vec 2) and to get the 'first' value you would write (vec 0).</p>
+	<p>If again you look back to last week's learning, you will discover that when you declare the parameters of a function, you do so using 
+	a vector.</p>
+	<p>Clojure includes some important functions that you can apply to vectors. These functions are so important that a senior engineer at 
+		a VERY large tech company has gone so far to say that, regarless of what language you are writting in,
+		if you are using loops instead of these, "You are doing it wrong."</p>
+	<h3>Reduce</h3>
+	<p>
+		Any time you have a vector and need a single result by doing calculation on the elements of the vector, you are reducing many values to one. 
+		That's why the BIF (Built In Function) to do this for you is called 'reduce.' To keep things simple, say you need to sum a list of integers. 
+		This is how you would do it without using a loop.
+	</p>
+	<p><pre>
+	<code class="Clojure">(def sum (reduce + [1 2 3 12 15 -4 0 18 2005]))</code></pre>
+	</p>
+	<p>Maybe you have a list of doubles defined as 'grades' somewhere in your code and need the average. Here is one way you could do this.
+<p><pre>
+	<code class="Clojure">(def grades [90.1 95.0 85.5 0.0 100.0])
+;;
+;; a bunch of code inbetween
+;;
+;;
+(def avg (/(reduce + grades) (count grades)))</code></pre>
+</p>
+<b>I DON'T LIKE THIS EXAMPLE. FIND ONE THAT HAS MORE RELEVANCE!!!</b>
+<p>In these examples of calling reduce use the '+' BIF. What if there aren't any BIFs that do what you need? The reduce 
+function allows you to pass any function to deal with your data, even one that isn't bound to a name. Here is an example where a bonus of 10% has 
+been added to the grades by a generous instructor.</p>
+<p><pre>
+	<code class="Clojure">(def grades [90.1 95.0 85.5 0.0 100.0])
+;;
+;; a bunch of code inbetween
+;;
+;;
+</code></pre>
+</p>
+<p>You also use the reduce function to <a href="https://clojuredocs.org/clojure.core/reduce"> merge lists and do other interesting things</a>.
+
+<h3>Map</h3>
+<p>If you have a bunch of data and you need to do something with that data and return the same number of pieces of data, the reduce 
+	function won't work well for you. Instead, you should apply the map function. That's what it is designed to do.</p>
+<p>Let's say you have a nice instructor who has decided to increase the scores in the grades vector seen above. This is how 
+	you would code this, using standard anonymous shorthand syntax,
+<p><pre>
+	<code class="Clojure">(map (fn [grade] (+ 10 grade)) grades)
+	</code></pre></p>
+	<p>or, using the anonymous function shorthand syntax, it would be this.</p>
+<p><pre>
+	<code class="Clojure">(map #(+ 10 %1) grades)
+</code></pre></p>
+<p>The map function is quite flexible. You can accomplish <a href="https://clojuredocs.org/clojure.core/map"> a lot with it</a>, 
+but there is yet another common function you can use to make your life easier and avoid nasty, slow looping code.</p>
+</p>
+<h3>Filter</h3>
+<p>There will come a time when you will need to filter something out of a vector of values. In the silly example we've been 
+working with, maybe the instructor realized that the assignments were messed up and wants to drop any grade less than 80.0
+from the grades. The filter function lets you filter out all list elements and do it without a loop.</p>
+
+<p><pre>
+	<code class="Clojure">(def updated (filter #(< 80.0 %1) grades))
+	</code></pre></p>
+
+<p>The filter function is <a href="https://clojuredocs.org/clojure.core/filter">also very flexible</a> but the true power of 
+these functions is using them together.</p>
+<p>Think about how you might wright some Python loops to modify everything in a list, filter the results of that update, and 
+then use those results to calculate a singe answer. That's a lot of looping and a lot of loops to track and maintain. You do 
+this type of process all the time when you do statistical and other calculations on data sets, but let's do it with our silly grades example. 
+What is the average grade if 10% is added to each grade, any grade less than 80.0 is dropped, and then the average is taken? 
+The code would look like this using the shorthand syntax for anonymous functions.</p>
+
+<p><pre>
+	<code class="Clojure">(/ (reduce + (filter #(< 80.0 %1) (map #(+ 10 %1) grades))) (count grades))
+	</code></pre></p>
+
+<p>Now don't panic. It's just function calls inside of function calls...lists inside of lists. Take some time. Break it into 
+pieces looking at the innermost function first and working out from there.</p>
+<p>This is all fine and dandy, but what about more complicated data? Consider this situation. You find you need to write 
+	code to track medications in a pharmacy. If you do this with vectors, your code looks something like this.</p>
+	<p>
+<pre><code class="Clojure">(def medications [["Lactated Ringers" "levothyroxine" "rosuvastatin" "albuterol" "esomeprazole"] 
+		   ["100L" "2000ct" "1500ct" "1325ct" "23145ct"] 
+		   ["i13ab7" "iat342" "igr5423" "iuy6532" "imnb78932"] 
+		   ["12/30/2029" "03/18/2021" "09/01/2020" "01/01/2023" "10/01/2021"]])
+</code>
+	</pre></p>
+	Or worse,
+	<p>
+<pre><code class="Clojure">(def medications [["Lactated Ringers" "levothyroxine" "rosuvastatin" "albuterol" "esomeprazole"] ["100L" "2000ct" "1500ct" "1325ct" "23145ct"] ["i13ab7" "iat342" "igr5423" "iuy6532" "imnb78932"] ["12/30/2029" "03/18/2021" "09/01/2020" "01/01/2023" "10/01/2021"]])
+</code>
+	</pre></p>
+	and worst of all,
+	<p>
+<pre><code class="Clojure">(def names ["Lactated Ringers" "levothyroxine" "rosuvastatin" "albuterol" "esomeprazole"]) 
+(def amount ["100L" "2000ct" "1500ct" "1325ct" "23145ct"]) 
+(def id ["i13ab7" "iat342" "igr5423" "iuy6532" "imnb78932"]) 
+(def expiration ["12/30/2029" "03/18/2021" "09/01/2020" "01/01/2023" "10/01/2021"])
+</code>
+	</pre></p>
+	<p>These approaches are bad. They are intrinsically unstable. You will have to write and test a whole bunch of code to make the CRUD (Create,Read,Update,Delete) features 
+		work, and you will have bugs in your code. Despite your best efforts, the data about the medications will become corrupted. It is too difficult to 
+	keep everything straight. Bugs will creap into this code and the application it is part of will fail. Thankfully,
+	the creators of Clojure provided a way out of this mess...the map.</p>	
+	<h3>Maps - keeping related data together </h3>
+	<p>Maps allow us to mingle different types of data together, and build relationships between the pieces of data. Using the 
+	medication example, you could create a map called medication that holds the medication's name, its manufacturer, its best-by
+	date, and the amount of the medication on hand, all in one place for each medication. Then you can have a whole bunch of these 
+	medications in a list if needed.</p>
+	<p>When you make a map, you need to have a name for each value you are going to put in the map. You are 'mapping' the name to the value. 
+		This means that when you want the value back out of the map, all you need to do is use the name mapped to the value.
+	</p>
+	<p>To define one of the medications from above using a map, you could write code like this.
+	<p>
+<pre><code class="Clojure">(def i13ab7 {:name "Lactated Ringers" :amount "100L" :expiration "12/30/2029"})
+</code>
+	</pre></p>
+	<p>The most common way to get any individual piece of information from a map, you use the piece's key like this.
+<p>
+<pre><code class="Clojure">(def an-amount (i13ab7 :amount))
+</code>
+	</pre></p>
+	</p>
+	<p>This example defines the an-amount value as the amount of the medication with the id i13ab7. In reality, rarely would you write the code for a single medication from a data set. Instead, it is likely that you would 
+		get a large data set consisting of tens if not hundreds of thousands of medications from a database, a file, or from a remote machine over 
+		a network using HTTP. You would then be using CRUD features to manipulate and/or retrieve specific pieces of data. In this 
+		very common type of situation, you would be working with a map containing maps. Look at this example which would be the code 
+		creating a map of maps from the medication examples we've been looking at. In this example, the id of the medication is used 
+		as the medication's key in the map of medications.
+	</p>
+
+
+	<p>
+<pre><code class="Clojure">(def medications {:i13ab7 {:name "Lactated Ringers" :amount "100L" :expiration "12/30/2029"} 
+:iat342 {:name "levothyroxine" :amount "2000ct" :expiration "03/18/2021"} 
+:igr5423 {:name "rosuvastatin" :amount "1500ct" :expiration "09/01/2020"} 
+:iuy6532 {:name "albuterol" :amount "1325ct" :expiration "01/01/2023"} 
+:imnb78932 {:name "esomeprazole" :amount "23145ct" :expiration "10/01/2021"}})
+</code>
+	</pre></p>
+	<p>Using the id of the medication as the key to all the other information about that medications means you can 
+		manipulate or get the rest of the data even if all you know is its id. To get the name of the medication with the 
+	id imnb78932 from the medications map, you'd write code like this.</p>
+
+<pre><code class="Clojure">((medications :imnb78932) :name)
+</code>
+	</pre></p>
+	<p>Remember, in Clojure, named values cannot be changed. It makes sence, then, that you can't change a value in a map. 
+	Instead, a new named value is created when modification is required. This means that 'changing' a map or a vector is 
+non-destructive. You get a changed version of the map or vector, but you still have access to the unmodified version as well. 
+You 'update' a named value in a map like this.</p>
+<pre><code class="Clojure">(def changed-medications (assoc-in medications [:imnb78932 :amount] "2200ct"))
+</code>
+	</pre></p>
+	<p>The changed-medications named value now appears to be a copy of medications with the amount of the imnb78932 medication 
+	modified to be 200ct. Appearances are deceptive. The writers of Clojure and other functional programming languages aren't 
+naive. For this to be a full copy would be wasteful of both RAM and CPU resourses. How they do this is outside of the scope of 
+this week's information. If you are interested in how they do it, the example of how vectors are 'modified' is covered early on 
+in Chris Okasaki's seminal book on the topic, 
+"<a href="https://www.amazon.com/Purely-Functional-Structures-Chris-Okasaki-ebook-dp-B00AKE1V04/dp/B00AKE1V04/ref=mt_kindle?_encoding=UTF8&me=&qid=1568926997">
+Purely Functional Data Structures</a>."</p>
+	<p>If you think about maps, since you can create maps of maps, you could create maps of maps of maps or maps of maps of maps of maps...
+		or any level of 'mapishness.' These recursive map-in-map relationships, along with vectors-in-maps and maps-in-vecors, 
+	is what you see in actual data sets used in applications.</p>
+	<p> Want to know more about <a href="https://clojure.org/guides/learn/hashed_colls#_maps">maps</a>? Feel free to spend 
+		some time with them learning about what they can do that is outside the scope of this class. 
+	They can be a very powerful tool in your clojure toolbelt.</p>
+
+	
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!-- uses https://highlightjs.org/
+-->
+
+<html>
+
+<head>
+	<script type="text/javascript">
+		var codeType = "C++"
+	</script>
+	<script src="../../../site/highlight.pack.js"></script>
+	<link rel="stylesheet" href="../../../site/highlight_styles/xcode.css">
+	<link rel="stylesheet" href="../../../site/weekly.css">
+	<script type="text/javascript" src="../../../site/weekly.js"></script>
+	
+
+</head>
+
+<body onload="fetchSource()">
+<div class="hero-image">
+  <div class="hero-text">
+    <h1>CSE 121a: Week 03</h1>
+    <p>Functions</p>
+  </div>
+</div>
+	<h1>Organization and Access</h1>
+	<p>All computer languages are ways to organize your communication and thinking. In this, they are very
+	similar to spoken languages. Each spoken language, or family of spoken languages, does this organization
+	differently. English sentences often have a structure of Subject-Helper Verb-Verb-Predicate...The boy will bite the dog, for example.
+	German, a language closely related to English, organizes things differently. Sometimes German sentences have a
+        Subject-Helper Verb-Predicate-Verb structure. For example,
+	Ich werde das Buch bald lesen, which if translated word-by-word is "I will the book soon read." Spanish is different yet again. 
+	It's adjectives are placed after the nouns they modify.</p>
+	<p>While each language has its own organizational rules, they all do the same thing. They allow us to organize and express
+	our thinking.</p>
+	<h3>Functions - the fundimental organization concept of Clojure</h3>
+	<p>Clojure and Python have functions as a fundimental organizational structure. When you truly begin 
+	thinking in Clojure, you will be thinking in functions. You will think of how functions are related to each other. You will 
+	have thoughts along these lines, "If this function calls that one..." You will be able to do this since you will eventually
+	realize that when you are designing solutions in Clojure, how a function accomplishes something is not as important as that it will, 
+	and that you can wait to figure out how to complete the function later.</p>
+	
+	<p>Put an example here of desinging a solution thinking in functions.</p>
+	<p>Since Python is a descendent of C and Clojure is not, there are differences between the languages regarding how you declare 
+	functions.
+
+	<p><pre>
+<code class="Clojure">;defn means define function
+(defn function-name [params] (
+	;code goes here))</code>
+	</pre></p>
+
+	<p>Here is an example of defining a simple function printing a greeting and a farewell.</p>
+<p><pre>
+<code class="Clojure">
+(defn hello-to [person-name](
+             (println (str "Hello " person-name))
+             (println (str "Goodbye " person-name))))</code>
+	</pre></p>
+	<p>Notice the thinking in functions. Functions are calling functions without worrying about how the 
+	functions being called accomplish their task. Here, the function calls are three deep. Figure out what 
+three deep means.</p>
+<h3>Multi-arity Functions</h3>
+<p>Sometimes you need a single function name to have different arities, different numbers of parameters. This is a simple example of 
+how to accomplish this.</p>
+<p><pre>
+<code class="Clojure">
+(defn hello-to
+  ;if there no parameters are passed to the function
+  ([] ;don't forget the space here.
+   (println "Hello everybody") ;don't forget the space here.
+   (println "Goodbye everybody"))
+                                    
+  ;if there one parameter is passed
+  ([person-name] (println (str "Hello " person-name)) ;don't forget the space here.
+   (println (str "Goodbye " person-name)))
+
+  ;if there are two parameters passed
+  ([person-name other-person-name] (println (str "Hello " person-name " and " other-person-name)) ;don't forget the space here.
+   (println (str"Goodbye " person-name " and " other-person-name))))</code>
+</pre></p>
+	<p>Do not jump to an unwarented, mistaken conclusion. You don't have to have definitions for all arities. 
+	You could have a function that defines behavior for and arity of 5 and an arity of 17 only. You would not have to define 
+	behavior for arities 0 through 17. Also, as mentioned in the comments of the example, don't forget 
+	the spaces indicated. You will learn why they are there next week.</p>
+	<p>Clojure is a strongly typed language. This means that when you have multiple versions of a function 
+	that differ by their arity, the types of each parameter must be the same. You could not, for example, have a 
+	1-arity version that has a string and a 2-arity version that has two ints. The first parameter would have to 
+	be a string.</p>
+	<h3>Functions with Default Parameters</h3>
+	<p>Clojure does not have syntax for defining default parameters as part of the function definition. Instead, 
+		you create a multi-arity function where one version of the function calls the other, passing it an additional 
+		value.
+	</p>
+	<p><pre><code class="Clojure">
+(defn scale 
+  ([size] (scale size 2)) 
+  ([size amount] (* size amount)))</code>
+</pre></p>
+	<p>When this function is called with one parameter, the function calls itself, passing two parameters...the size and 2. 
+	The 2-arity version of the function is then executed to mutlipley the size by the default value 2. If you pass both the 
+	size and  amount to the scale function, the 2-arity version of the function is called directly. Recursive function calls 
+	like this are a natural part of all functional programming langugages. Make sure you come to a very good understanding of 
+	them. To aid you in your progress, here is an example of using recursion.</p>
+
+	<p><pre>
+	<code class="Clojure">(defn factorial
+  ([n] (factorial n 1)) 
+  ([n accumulator] 
+   (if (= n 0) accumulator 
+     (recur (dec n) (* accumulator n)))))</code></pre>
+	</p>
+	<h3>Bringing it All Together</h3>
+	<p>Since you are an embryonic programmer and engineer, it is important that you develop 
+		<a href="http://clojure-doc.org/articles/language/functions.html"> a more complete and more technical understanding of Clojure functions</a> 
+		to prepare yourself for both your career and future classes. Explore beyond what you will learn 
+		in this class. That is part of being a professional.
+	</p>
+	<p> Now that you've had an initial exposure to functions, you should go back to <a href="../week02/index.html">last week's material</a>  
+	and take a look at the functions that are used in Clojure instead of operators. Take a cut at how you might have defined each of those functions 
+	if you had written Clojure. This will help you with your 'thinking in functions' ability.</p> 
+	<p>
+		You will be using functions for all the rest of the weeks you are in this class. Next week, you will 
+		be using functions and learning more about them.
+	</p>
+	
+	
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+</body>
+</html>
