@@ -27,12 +27,6 @@
 	<p><pre>
 <code class="Clojure">(ns course-instructor-solutions.core
   (:gen-class))
-
-(defn -main []
-  (decode-prime-list `(1 1 0 1 0 1 3 1 0 1 3 1 0 1 3 1 5 1 0 1 5 1 3 1 0 1 3 1 5 1 5 1 0 1 5 1 3 1 0 1 5 1 3 1 5 1 7 1 3)))
-
-      
-
    
 (defn decode-prime-list
   ([elements] (decode-prime-list elements 2 nil));facade clause
@@ -45,6 +39,11 @@
    (if (empty? (rest elements));if the rest of the list is empty
      (reverse prepended-accumulator);the list was prepended, so reverse the list to get the right order and return the result
      (recur (rest elements) (+ inc counter) prepended-accumulator))));otherwise, call decode-prime-list again
+
+
+(defn -main []
+  (decode-prime-list `(1 1 0 1 0 1 3 1 0 1 3 1 0 1 3 1 5 1 0 1 5 1 3 1 0 1 3 1 5 1 5 1 0 1 5 1 3 1 0 1 5 1 3 1 5 1 7 1 3)))
+
 </code>
 	</pre></p>
 	
