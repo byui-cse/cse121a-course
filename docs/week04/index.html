@@ -102,11 +102,12 @@ been added to the grades by a generous instructor.</p>
 <p>If you have a bunch of data and you need to do something with that data and return the same number of pieces of data, the reduce 
 	function won't work well for you. Instead, you should apply the map function. That's what it is designed to do.</p>
 <p>Let's say you have a nice instructor who has decided to increase the scores in the grades vector seen above. This is how 
-	you would code this, using standard anonymous shorthand syntax,
+	you would code this, using standard anonymous function syntax,
 <p><pre>
 	<code class="Clojure">(map (fn [grade] (+ 10 grade)) grades)
 	</code></pre></p>
-	<p>or, using the anonymous function shorthand syntax, it would be this.</p>
+	<p>or, using the <a href="<a href="https://clojure.org/guides/learn/functions#_anonymous_function_syntax">">
+	anonymous function shorthand syntax</a>, it would be this.</p>
 <p><pre>
 	<code class="Clojure">(map #(+ 10 %1) grades)
 </code></pre></p>

@@ -26,8 +26,28 @@
 <h2>Do not look at this code until after you have completed your working solution and will not make any changes to your solution.</h2>
 	<p><pre>
 <code class="Clojure">(ns course-instructor-solutions.core
-  (:gen-class))
+  (:gen-class)
+  (:require [clojure.math.combinatorics :as combo]))
 
+
+ 
+
+(defn -main []
+  (println "Two Lists Results: ")
+  (println
+    (filter 
+      #(= (first %) "Chocolate");The 1 for the parameter number indicator (%) is not needed since there is only one parameter.
+      (combo/cartesian-product 
+        ["Vanilla" "Chocolate" "Cherry-Ripple"]
+        ["Lemon" "Butterscotch" "Licorice-Ripple"])))
+  (newline)
+  (println "Single List Results: ")
+  (println
+    (filter 
+       #(or (= (first %) "Chocolate") (= (last %) "Chocolate"))
+      (combo/cartesian-product
+        ["Vanilla" "Chocolate" "Cherry-Ripple" "Lemon" "Butterscotch" "Licorice-Ripple"]
+        ["Vanilla" "Chocolate" "Cherry-Ripple" "Lemon" "Butterscotch" "Licorice-Ripple"]))))
 </code>
 	</pre></p>
 	
