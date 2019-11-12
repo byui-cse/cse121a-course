@@ -25,10 +25,7 @@
 </div>
 <h2>Do not look at this code until after you have completed your working solution and will not make any changes to your solution.</h2>
 	<p><pre>
-<code class="Clojure">(ns course-instructor-solutions.core
-  (:gen-class))
-   
-(defn decode-prime-list
+<code class="Clojure">(defn decode-prime-list
   ([elements] (decode-prime-list elements 2 nil));facade clause
   ([elements counter accumulator];working clause
    (if (= (first elements) 0);if the first element of the list is 0
