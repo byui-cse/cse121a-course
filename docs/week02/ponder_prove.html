@@ -2,30 +2,145 @@
 -->
 
 <html>
+    <head>
+	      <link rel="shortcut icon" href="https://byui-cse.github.io/Language-Courses/site/images/fav.ico" type="image/x-i        con">
+        <script type="text/javascript">
+         var codeType = "Clojure"
+        </script>
+        <script src="https://byui-cse.github.io/Language-Courses/site/highlight.pack.js"></script>
+        <link rel="stylesheet" href="https://byui-cse.github.io/Language-Courses/site/highlight_styles/xcode.css">
+        <link rel="stylesheet" href="https://byui-cse.github.io/Language-Courses/site/weekly.css">
+        <script type="text/javascript" src="https://byui-cse.github.io/Language-Courses/site/weekly.js"></script>
 
-<head>
-	<script type="text/javascript">
-		var codeType = "C++"
-	</script>
-	<script src="../../../site/highlight.pack.js"></script>
-	<link rel="stylesheet" href="../../../site/highlight_styles/xcode.css">
-	<link rel="stylesheet" href="../../../site/weekly.css">
-	<script type="text/javascript" src="../../../site/weekly.js"></script>
-	
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({
+             displayAlign: "center",
+             displayIndent: "0em",
 
-</head>
+             "HTML-CSS": { scale: 100,
+                           linebreaks: { automatic: "false" },
+                           webFont: "TeX"
+             },
+             SVG: {scale: 100,
+                   linebreaks: { automatic: "false" },
+                   font: "TeX"},
+             NativeMML: {scale: 100},
+             TeX: { equationNumbers: {autoNumber: "AMS"},
+                    MultLineWidth: "85%",
+                    TagSide: "right",
+                    TagIndent: ".8em"
+             }
+         });
+        </script>
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML">
+        </script>
+    </head>
 
 <body onload="fetchSource()">
 <div class="hero-image">
   <div class="hero-text">
-    <h1>CSE 121c: Week 01</h1>
+    <h1>CSE 121a: Week 02</h1>
     <p>Ponder and Prove</p>
   </div>
 </div>
-	<h1>Your Task</h1>
-	<p>Create a desktop video of you using the stepwise debugger in the Eclipse IDE. Show how to use the step-over and step-into features, 
-	along with the mouse-over and variables tab feature.</p>
+	<h1>Your Two Tasks</h1>
 
+  <h2>Rational number representation</h2>
+
+  <p>
+      One of the problems you run into is that computers are really bad at
+      representing numbers with decimal points, and you really can&rsquo;t trust them.
+  </p>
+
+  <p>
+      This task is intended to help you start making this transition in your thinking.
+  </p>
+  <h3>The Task</h3>
+  <p>
+      All rational numbers where the numerators and denominators do not have any
+      common factors (reduced to lowest terms) have a repeating sequence of digits
+      (called the period) after the decimal point.
+  </p>
+
+  <p>
+      Using numbers of your choice of size less than 1000, find five rational numbers
+      whose float versions do not match Wolfram-Alpha&rsquo;s representation of that number.
+      Also, find five that do match.
+  </p>
+  <h2>Permutations and combinations of strings</h2>
+  <p>
+      Computer scientists often have to deal with large data sets that are generated
+      by combinations of simpler things.
+  </p>
+
+  <p>
+      In machine learning we often encounter the strange fascination of grappling
+      with large data sets that we would like to classify into smaller, more
+      comprehensible sets. Generating decision trees is one method that has been
+      employed to good advantage. However, decision trees can be large and very
+      complex, thus hard to deal with. Research is ongoing into discovering
+      efficient methods for &ldquo;pruning&rdquo; and thus shrinking these data structures to a
+      more manageable size.
+  </p>
+
+  <p>
+      Consider IBM&rsquo;s Deep Blue chess program, whose capability of
+      evaluating 200 million positions per second was accomplished mainly
+      through brute force computer power. Beating world champion Gary Kasparov
+      in 1997 was its main claim to fame, though it had nothing powering it that
+      remotely resembled machine learning artifical intelligence. That is 21<sup>st</sup>
+      century technology!
+  </p>
+
+  <p>
+      You are likely going to encounter similar seemingly impossible tasks in your
+      computer science career, so why not start getting some practice now?
+  </p>
+  <h3>The Task</h3>
+
+  <p>
+      If you were to write some code that would generate all the possible anagrams of
+      &ldquo;asdf&rdquo;, how many answers would you have to look at to find all the English words?
+  </p>
+
+  <p>
+      In Clojure you can divide up a string into individual characters using this code:
+  </p>
+
+  <code class="Clojure">
+    (def chars (seq (char-array "asdf")))
+  </code>
+
+  <p>
+      You can join them back together using join:
+  </p>
+
+  <code class="Clojure">
+      (clojure.string/join chars)
+  </code>
+
+  <p>
+      In between you could rearrange the characters to join them back as a different word.
+      Feel free to explore how you would do that, but your assignment here is to calculate
+      how many &ldquo;permutations&rdquo; (google it) there are.
+  </p>
+
+  <p>
+      Use the formula \(_{n}{}P_{k} \equiv \frac{n!}{(n-k)!}\)
+  </p>
+
+  <p>
+      where n is the number of characters in the whole string, and k is the number
+      of characters in the generated words. Your task is to write one line of code
+      that calculates how many three-character strings you have to look through to
+      find all recognizable words if the original string is the following short
+      phrase:
+  </p>
+
+  <p>
+      <b><i>Facetiously speaking, what is special about May the fourth?</i></b>
+  </p>
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 </body>
 </html>

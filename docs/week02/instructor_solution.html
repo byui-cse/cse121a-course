@@ -4,27 +4,214 @@
 <html>
 
 <head>
-	<script type="text/javascript">
-		var codeType = "C++"
-	</script>
-	<script src="../../../site/highlight.pack.js"></script>
-	<link rel="stylesheet" href="../../../site/highlight_styles/xcode.css">
-	<link rel="stylesheet" href="../../../site/weekly.css">
-	<script type="text/javascript" src="../../../site/weekly.js"></script>
-	
-
+	<link rel="shortcut icon" href="https://byui-cse.github.io/Language-Courses/site/images/fav.ico" type="image/x-i        con">
+    <script type="text/javascript">
+                 var codeType = "Clojure"
+    </script>
+    <script src="https://byui-cse.github.io/Language-Courses/site/highlight.pack.js"></script>
+    <link rel="stylesheet" href="https://byui-cse.github.io/Language-Courses/site/highlight_styles/xcode.css">
+    <link rel="stylesheet" href="https://byui-cse.github.io/Language-Courses/site/weekly.css">
+    <script type="text/javascript" src="https://byui-cse.github.io/Language-Courses/site/weekly.js"></script>
 </head>
 
 <body onload="fetchSource()">
 <div class="hero-image">
   <div class="hero-text">
-    <h1>CSE 121c: Week 01</h1>
-    <p>Ponder and Prove</p>
+    <h1>CSE 121a: Week 02</h1>
+    <p>Instructor Solution</p>
   </div>
 </div>
-	<h1>Your Task</h1>
-	<p>Create a desktop video of you using the stepwise debugger in the Eclipse IDE. Show how to use the step-over and step-into features, 
-	along with the mouse-over and variables tab feature.</p>
+<h2>Do not look at this code until after you have completed your working solution and will not make any changes to your solution.</h2>
+<h1>Rational number representation</h1>
+<h3>Five that don&rsquo;t match:</h3>
+<table class="blueTable" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<thead>
+<tr>
+<th>Num</th>
+<th>Den</th>
+<th>Float Version</th>
+<th>WA Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>900</td>
+<td>936</td>
+<td>0.96153843</td>
+<td>0.9615384615384 (period 6)</td>
+</tr>
+
+<tr>
+<td>777</td>
+<td>889</td>
+<td>0.87401575</td>
+<td>0.874015748031496062992125984251968503937007 (period 42)</td>
+</tr>
+
+<tr>
+<td>234</td>
+<td>457</td>
+<td>0.512035</td>
+<td>0.5120350109409190371991247264770240700218818380743982494529540481400437636761487964989059080962800875273522975929978118161925601750547045951859956236323 (period 152)</td>
+</tr>
+
+<tr>
+<td>987</td>
+<td>997</td>
+<td>0.9899699</td>
+<td>0.9899699097291875626880641925777331995987963891675025075225677031093279839518555667001003009027081243731193580742226680040120361083249749247743229689067201604814443329 (period 166)</td>
+</tr>
+
+<tr>
+<td>901</td>
+<td>937</td>
+<td>0.9615795</td>
+<td>0.96157950907150480256136606189967982924226254002134471718249733191035218783351120597652081109925293489861259338313767342582710779082177161152614727854855923159018143009605122732123799359658484525080042689434364994663820704375667022411953041622198505869797225186766275346851654215581643543223052294557097118463180362860192102454642475987193169690501600853788687299893276414087513340448239060832443970117395944503735325506937033084311632870864461045891141942369263607257203842049092849519743863393810032017075773745997865528281750266808964781216648879402347918890074706510138740661686232657417289220917822838847385272145144076840981856990394877267876200640341515474919957310565635005336179295624332977588046958377801494130202774813233724653148345784418356456776947705442902881536819637139807897545357524012806830309498399146211312700106723585912486659551760939167556029882604055496264674493062966915688367129135538954108858057630736392742 (period 936)</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Five that match:</h3>
+
+<table class="blueTable" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<thead>
+<tr>
+<th>Num</th>
+<th>Den</th>
+<th>Float Version</th>
+<th>WA Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>25</td>
+<td>100</td>
+<td>0.25</td>
+<td>0.25</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>500</td>
+<td>0.006</td>
+<td>0.006</td>
+</tr>
+
+<tr>
+<td>330</td>
+<td>660</td>
+<td>0.5</td>
+<td>0.5</td>
+</tr>
+
+<tr>
+<td>119</td>
+<td>432</td>
+<td>0.27546296</td>
+<td>0.27546296</td>
+</tr>
+
+<tr>
+<td>534</td>
+<td>800</td>
+<td>0.6675</td>
+<td>0.6675</td>
+</tr>
+</tbody>
+</table>
+<h1>Permutations and combinations of strings</h1>
+<p>
+  Not a complete solution, just some code to stimulate your thinking:
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #262626;">(</span><span style="color: #2020cc; font-weight: bold;">def</span> <span style="color: #6a621b;">chars</span> <span style="color: #077707;">(</span>seq <span style="color: #ab9c3a;">(</span>char-array <span style="color: #fa5151;">"asdf"</span><span style="color: #ab9c3a;">)</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #262626;">(</span><span style="color: #9400d3;">clojure.string</span>/join chars<span style="color: #262626;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #262626;">(</span><span style="color: #2020cc; font-weight: bold;">def</span> <span style="color: #6a621b;">short-phrase</span> <span style="color: #fa5151;">"Facetiously speaking, what is special about May the fourth?"</span><span style="color: #262626;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #262626;">(</span>count short-phrase<span style="color: #262626;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #262626;">(</span>range <span style="color: #259ea2;">57</span> <span style="color: #259ea2;">60</span><span style="color: #262626;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #262626;">(</span>/ <span style="color: #077707;">(</span>apply * <span style="color: #ab9c3a;">(</span>range <span style="color: #259ea2;">1</span> <span style="color: #259ea2;">60</span><span style="color: #ab9c3a;">)</span><span style="color: #077707;">)</span> <span style="color: #077707;">(</span>apply * <span style="color: #ab9c3a;">(</span>range <span style="color: #259ea2;">1</span> <span style="color: #259ea2;">57</span><span style="color: #ab9c3a;">)</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #262626;">(</span>apply * <span style="color: #077707;">(</span>map bigint <span style="color: #ab9c3a;">(</span>range <span style="color: #259ea2;">1</span> <span style="color: #259ea2;">100</span><span style="color: #ab9c3a;">)</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #262626;">(</span>/ <span style="color: #077707;">(</span>apply * <span style="color: #ab9c3a;">(</span>map bigint <span style="color: #358d8d;">(</span>range <span style="color: #259ea2;">1</span> <span style="color: #259ea2;">60</span><span style="color: #358d8d;">)</span><span style="color: #ab9c3a;">)</span><span style="color: #077707;">)</span> <span style="color: #077707;">(</span>apply * <span style="color: #ab9c3a;">(</span>map bigint <span style="color: #358d8d;">(</span>range <span style="color: #259ea2;">1</span> <span style="color: #259ea2;">57</span><span style="color: #358d8d;">)</span><span style="color: #ab9c3a;">)</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #262626;">(</span>apply * <span style="color: #077707;">(</span>range <span style="color: #259ea2;">57</span> <span style="color: #259ea2;">60</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #262626;">(</span><span style="color: #9400d3;">clojure.string</span>/join '<span style="color: #077707;">(</span>\N <span style="color: #fa5151;">\o</span> <span style="color: #fa5151;">\w</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #262626;">(</span><span style="color: #2020cc; font-weight: bold;">def</span> <span style="color: #6a621b;">up-case-word-list</span> <span style="color: #077707;">(</span>map <span style="color: #9400d3;">clojure.string</span>/upper-case <span style="color: #ab9c3a;">(</span><span style="color: #9400d3;">clojure.string</span>/split short-phrase #<span style="color: #fa5151;">" "</span><span style="color: #ab9c3a;">)</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #262626;">(</span><span style="color: #9400d3;">clojure.string</span>/replace <span style="color: #077707;">(</span>nth up-case-word-list <span style="color: #259ea2;">1</span><span style="color: #077707;">)</span> #<span style="color: #fa5151;">","</span> <span style="color: #fa5151;">""</span><span style="color: #262626;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #262626;">(</span><span style="color: #9400d3;">clojure.string</span>/replace <span style="color: #077707;">(</span>nth up-case-word-list <span style="color: #259ea2;">8</span><span style="color: #077707;">)</span> #<span style="color: #fa5151;">"[</span><span style="color: #fa5151; font-weight: bold;">\?\,</span><span style="color: #fa5151;">]"</span> <span style="color: #fa5151;">""</span><span style="color: #262626;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #262626;">(</span><span style="color: #2020cc; font-weight: bold;">for</span> <span style="color: #077707;">[</span>str up-case-word-list<span style="color: #077707;">]</span> <span style="color: #077707;">(</span><span style="color: #9400d3;">clojure.string</span>/replace str #<span style="color: #fa5151;">"[</span><span style="color: #fa5151; font-weight: bold;">\,\?</span><span style="color: #fa5151;">]"</span> <span style="color: #fa5151;">""</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #262626;">(</span>apply <span style="color: #9400d3;">clojure.set</span>/union <span style="color: #077707;">(</span>map set <span style="color: #ab9c3a;">(</span><span style="color: #2020cc; font-weight: bold;">for</span> <span style="color: #358d8d;">[</span>str up-case-word-list<span style="color: #358d8d;">]</span> <span style="color: #358d8d;">(</span><span style="color: #9400d3;">clojure.string</span>/replace str #<span style="color: #fa5151;">"[</span><span style="color: #fa5151; font-weight: bold;">\,\?</span><span style="color: #fa5151;">]"</span> <span style="color: #fa5151;">""</span><span style="color: #358d8d;">)</span><span style="color: #ab9c3a;">)</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #262626;">(</span><span style="color: #2020cc; font-weight: bold;">def</span> <span style="color: #6a621b;">unique-char-set</span>
+  <span style="color: #077707;">(</span>apply <span style="color: #9400d3;">clojure.set</span>/union <span style="color: #ab9c3a;">(</span>map set <span style="color: #358d8d;">(</span>map <span style="color: #1c9e28;">(</span><span style="color: #2020cc; font-weight: bold;">fn</span> <span style="color: #2020cc;">[</span>str<span style="color: #2020cc;">]</span> <span style="color: #2020cc;">(</span><span style="color: #9400d3;">clojure.string</span>/replace str #<span style="color: #fa5151;">"[</span><span style="color: #fa5151; font-weight: bold;">\,\?</span><span style="color: #fa5151;">]"</span> <span style="color: #fa5151;">""</span><span style="color: #2020cc;">)</span><span style="color: #1c9e28;">)</span> up-case-word-list<span style="color: #358d8d;">)</span><span style="color: #ab9c3a;">)</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #262626;">(</span>count unique-char-set<span style="color: #262626;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 </body>

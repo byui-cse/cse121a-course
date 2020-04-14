@@ -1,8 +1,6 @@
 <!-- uses https://highlightjs.org/
 -->
-
 <html>
-
 <head>
 	<link rel="shortcut icon" href="https://byui-cse.github.io/Language-Courses/site/images/fav.ico" type="image/x-i        con">
     <script type="text/javascript">
@@ -12,8 +10,6 @@
     <link rel="stylesheet" href="https://byui-cse.github.io/Language-Courses/site/highlight_styles/xcode.css">
     <link rel="stylesheet" href="https://byui-cse.github.io/Language-Courses/site/weekly.css">
     <script type="text/javascript" src="https://byui-cse.github.io/Language-Courses/site/weekly.js"></script>
-
-
 </head>
 
 <body onload="fetchSource()">
@@ -25,12 +21,18 @@
 	</div>
 	<h1>Similarities and Differences</h1>
 	<h3>Operators and Functions</h3>
-	<p>Remember, Python has C as one of its ancestors. Because of this, it is not shocking to find out that
-		Python inherited many of its operators directly from C. Since Clojure does not have C as an ancestor,
-		it should come as no surprise that it has no operators at all, an operator being a C concept and construct.
-	</p>
-	<p>Don't get the wrong idea. Each of these behaviors can be done in Clojure, they will just be done differently. Take a look
-	at Table 1 to see how.</p>
+	<p>
+      Remember, Python has C as one of its ancestors. Because of this, it is not
+		  shocking to find out that Python inherited many of its operators directly
+		  from C. Since Clojure does not have C as an ancestor, it should come as no
+		  surprise that it has no operators at all, an operator being a C concept and
+		  construct.
+  </p>
+	<p>
+      Don&rsquo;t get the wrong idea. Each of these behaviors can be done in
+	    Clojure, they will just be done differently. Take a look at Table 1 to see
+	    how.
+  </p>
 	<p>
 		<table class="blueTable">
 			<caption>Table 1: Clojure Equivalents of Python Operators</caption>
@@ -118,7 +120,7 @@
 	<p>The Clojure syntax examples you see in the table above use a function instead of an operator. You'll learn a lot more about functions next week
 	so don't get too worried if you don't understand much about them yet.
 	</p>
-	<h3>Variables...or Not???</h3>
+	<h3>Variables... or Not???</h3>
 	<p>Python has variables. This is valid Python code.</p>
 	<pre>
 <code class="Python">age = 3
@@ -140,7 +142,7 @@ age = 4.2</code>
 		The second is the value to bind to the name. As with all things, there are pluses and minuses to having immutable bindings. A plus is that
 		you never have to check if a value has been bound. This dramatically reduces the amount of error checking code you have to write. The only
 		negative is that you have to learn to think differently if you are coming from a background of languages that have variables. It doesn't
-		take too long to make this change, if you open up your mind to possibilities.
+		take too long to make this change, if you open up your mind to the possibilities.
 	</p>
 	<h4>Some Common, Valid Clojure Variable Types</h4>
 	<p>Basic Integer Types
@@ -174,11 +176,16 @@ age = 4.2</code>
 	</p>
 	</pre>
 	<p>
-		Be careful. It is tempting to think, "Hey...those floating point numbers look like they could hold bigger integers than an integer can. Maybe I'll just use them." Such a thought would lead you
-	down a path you do not want to be on. Beginning programmers tend to think of floating point numbers as being a continuous number line. They are not. There are
-	numbers that a floating point number cannot represent. There are gaps in the floating point numbers on all computers in all languages and the larger the integer you
-	try to represent, the higher the probability that adding 1 to that number will result in the original number.
-	</p>
+		  Be careful. It is tempting to think, &ldquo;Hey...those floating point
+	    numbers look like they could hold bigger integers than an integer can. Maybe
+	    I'll just use them.&rdquo; Such a thought would lead you down a path you do
+	    not want to be on. Beginning programmers tend to think of floating point
+	    numbers as being a continuous number line. They are not. There are numbers
+	    that a floating point number cannot represent. There are gaps in the floating
+	    point numbers on all computers in all languages and the larger the integer you
+	    try to represent, the higher the probability that adding 1 to that number will
+	    result in the original number.
+  </p>
 	<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 </body>
 </html>
