@@ -123,95 +123,41 @@
 <p>
   Not a complete solution, just some code to stimulate your thinking:
 </p>
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #262626;">(</span><span style="color: #2020cc; font-weight: bold;">def</span> <span style="color: #6a621b;">chars</span> <span style="color: #077707;">(</span>seq <span style="color: #ab9c3a;">(</span>char-array <span style="color: #fa5151;">"asdf"</span><span style="color: #ab9c3a;">)</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
-</pre>
-</div>
+<p><pre><code class="Clojure">
+(def chars (seq (char-array "asdf")))
 
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #262626;">(</span><span style="color: #9400d3;">clojure.string</span>/join chars<span style="color: #262626;">)</span>
-</pre>
-</div>
+(clojure.string/join chars)
 
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #262626;">(</span><span style="color: #2020cc; font-weight: bold;">def</span> <span style="color: #6a621b;">short-phrase</span> <span style="color: #fa5151;">"Facetiously speaking, what is special about May the fourth?"</span><span style="color: #262626;">)</span>
-</pre>
-</div>
+(count short-phrase)
 
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #262626;">(</span>count short-phrase<span style="color: #262626;">)</span>
-</pre>
-</div>
+(range 57 60)
 
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #262626;">(</span>range <span style="color: #259ea2;">57</span> <span style="color: #259ea2;">60</span><span style="color: #262626;">)</span>
-</pre>
-</div>
+(/ (apply * (range 1 60)) (apply * (range 1 57)))
 
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #262626;">(</span>/ <span style="color: #077707;">(</span>apply * <span style="color: #ab9c3a;">(</span>range <span style="color: #259ea2;">1</span> <span style="color: #259ea2;">60</span><span style="color: #ab9c3a;">)</span><span style="color: #077707;">)</span> <span style="color: #077707;">(</span>apply * <span style="color: #ab9c3a;">(</span>range <span style="color: #259ea2;">1</span> <span style="color: #259ea2;">57</span><span style="color: #ab9c3a;">)</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
-</pre>
-</div>
+(apply * (map bigint (range 1 100)))
 
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #262626;">(</span>apply * <span style="color: #077707;">(</span>map bigint <span style="color: #ab9c3a;">(</span>range <span style="color: #259ea2;">1</span> <span style="color: #259ea2;">100</span><span style="color: #ab9c3a;">)</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
-</pre>
-</div>
+(/ (apply * (map bigint (range 1 60))) (apply * (map bigint (range 1 57))))
 
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #262626;">(</span>/ <span style="color: #077707;">(</span>apply * <span style="color: #ab9c3a;">(</span>map bigint <span style="color: #358d8d;">(</span>range <span style="color: #259ea2;">1</span> <span style="color: #259ea2;">60</span><span style="color: #358d8d;">)</span><span style="color: #ab9c3a;">)</span><span style="color: #077707;">)</span> <span style="color: #077707;">(</span>apply * <span style="color: #ab9c3a;">(</span>map bigint <span style="color: #358d8d;">(</span>range <span style="color: #259ea2;">1</span> <span style="color: #259ea2;">57</span><span style="color: #358d8d;">)</span><span style="color: #ab9c3a;">)</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
-</pre>
-</div>
+(apply * (range 57 60))
 
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #262626;">(</span>apply * <span style="color: #077707;">(</span>range <span style="color: #259ea2;">57</span> <span style="color: #259ea2;">60</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
-</pre>
-</div>
+(clojure.string/join '(\N \o \w))
 
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #262626;">(</span><span style="color: #9400d3;">clojure.string</span>/join '<span style="color: #077707;">(</span>\N <span style="color: #fa5151;">\o</span> <span style="color: #fa5151;">\w</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
-</pre>
-</div>
+(def up-case-word-list (map clojure.string/upper-case (clojure.string/split short-phrase #" ")))
 
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #262626;">(</span><span style="color: #2020cc; font-weight: bold;">def</span> <span style="color: #6a621b;">up-case-word-list</span> <span style="color: #077707;">(</span>map <span style="color: #9400d3;">clojure.string</span>/upper-case <span style="color: #ab9c3a;">(</span><span style="color: #9400d3;">clojure.string</span>/split short-phrase #<span style="color: #fa5151;">" "</span><span style="color: #ab9c3a;">)</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
-</pre>
-</div>
+(clojure.string/replace (nth up-case-word-list 1) #"," "")
 
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #262626;">(</span><span style="color: #9400d3;">clojure.string</span>/replace <span style="color: #077707;">(</span>nth up-case-word-list <span style="color: #259ea2;">1</span><span style="color: #077707;">)</span> #<span style="color: #fa5151;">","</span> <span style="color: #fa5151;">""</span><span style="color: #262626;">)</span>
-</pre>
-</div>
+(clojure.string/replace (nth up-case-word-list 8) #"[\?\,]" "")
 
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #262626;">(</span><span style="color: #9400d3;">clojure.string</span>/replace <span style="color: #077707;">(</span>nth up-case-word-list <span style="color: #259ea2;">8</span><span style="color: #077707;">)</span> #<span style="color: #fa5151;">"[</span><span style="color: #fa5151; font-weight: bold;">\?\,</span><span style="color: #fa5151;">]"</span> <span style="color: #fa5151;">""</span><span style="color: #262626;">)</span>
-</pre>
-</div>
+(for [str up-case-word-list] (clojure.string/replace str #"[\,\?]" ""))
 
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #262626;">(</span><span style="color: #2020cc; font-weight: bold;">for</span> <span style="color: #077707;">[</span>str up-case-word-list<span style="color: #077707;">]</span> <span style="color: #077707;">(</span><span style="color: #9400d3;">clojure.string</span>/replace str #<span style="color: #fa5151;">"[</span><span style="color: #fa5151; font-weight: bold;">\,\?</span><span style="color: #fa5151;">]"</span> <span style="color: #fa5151;">""</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
-</pre>
-</div>
+(apply clojure.set/union (map set (for [str up-case-word-list] (clojure.string/replace str #"[\,\?]" ""))))
 
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #262626;">(</span>apply <span style="color: #9400d3;">clojure.set</span>/union <span style="color: #077707;">(</span>map set <span style="color: #ab9c3a;">(</span><span style="color: #2020cc; font-weight: bold;">for</span> <span style="color: #358d8d;">[</span>str up-case-word-list<span style="color: #358d8d;">]</span> <span style="color: #358d8d;">(</span><span style="color: #9400d3;">clojure.string</span>/replace str #<span style="color: #fa5151;">"[</span><span style="color: #fa5151; font-weight: bold;">\,\?</span><span style="color: #fa5151;">]"</span> <span style="color: #fa5151;">""</span><span style="color: #358d8d;">)</span><span style="color: #ab9c3a;">)</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
-</pre>
-</div>
+(def unique-char-set
 
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #262626;">(</span><span style="color: #2020cc; font-weight: bold;">def</span> <span style="color: #6a621b;">unique-char-set</span>
-  <span style="color: #077707;">(</span>apply <span style="color: #9400d3;">clojure.set</span>/union <span style="color: #ab9c3a;">(</span>map set <span style="color: #358d8d;">(</span>map <span style="color: #1c9e28;">(</span><span style="color: #2020cc; font-weight: bold;">fn</span> <span style="color: #2020cc;">[</span>str<span style="color: #2020cc;">]</span> <span style="color: #2020cc;">(</span><span style="color: #9400d3;">clojure.string</span>/replace str #<span style="color: #fa5151;">"[</span><span style="color: #fa5151; font-weight: bold;">\,\?</span><span style="color: #fa5151;">]"</span> <span style="color: #fa5151;">""</span><span style="color: #2020cc;">)</span><span style="color: #1c9e28;">)</span> up-case-word-list<span style="color: #358d8d;">)</span><span style="color: #ab9c3a;">)</span><span style="color: #077707;">)</span><span style="color: #262626;">)</span>
-</pre>
-</div>
+(apply clojure.set/union (map set (map (fn [str] (clojure.string/replace str #"[\,\?]" "")) up-case-word-list))))
 
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #262626;">(</span>count unique-char-set<span style="color: #262626;">)</span>
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
+(count unique-char-set)
+</code></pre></p>
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 </body>
