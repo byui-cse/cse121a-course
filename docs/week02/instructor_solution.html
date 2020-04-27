@@ -124,11 +124,9 @@
   Not a complete solution, just some code to stimulate your thinking:
 </p>
 <p><pre><code class="Clojure">
-(def chars (seq (char-array "asdf")))
+(def chars-to-play-with (seq (char-array "asdf")))
 
-(clojure.string/join chars)
-
-(count short-phrase)
+(clojure.string/join chars-to-play-with)
 
 (range 57 60)
 
@@ -142,6 +140,8 @@
 
 (clojure.string/join '(\N \o \w))
 
+(def short-phrase "Facetiously speaking, what is special about May the fourth?")
+
 (def up-case-word-list (map clojure.string/upper-case (clojure.string/split short-phrase #" ")))
 
 (clojure.string/replace (nth up-case-word-list 1) #"," "")
@@ -150,11 +150,12 @@
 
 (for [str up-case-word-list] (clojure.string/replace str #"[\,\?]" ""))
 
-(apply clojure.set/union (map set (for [str up-case-word-list] (clojure.string/replace str #"[\,\?]" ""))))
+(require '(clojure [set :as s]))
+
+(apply s/union (map set (for [str up-case-word-list] (clojure.string/replace str #"[\,\?]" ""))))
 
 (def unique-char-set
-
-(apply clojure.set/union (map set (map (fn [str] (clojure.string/replace str #"[\,\?]" "")) up-case-word-list))))
+  (apply s/union (map set (map (fn [str] (clojure.string/replace str #"[\,\?]" "")) up-case-word-list))))
 
 (count unique-char-set)
 </code></pre></p>
