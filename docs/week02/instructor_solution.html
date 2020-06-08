@@ -150,12 +150,10 @@
 
 (for [str up-case-word-list] (clojure.string/replace str #"[\,\?]" ""))
 
-(require '(clojure [set :as s]))
-
-(apply s/union (map set (for [str up-case-word-list] (clojure.string/replace str #"[\,\?]" ""))))
+(apply clojure.set/union (map set (for [str up-case-word-list] (clojure.string/replace str #"[\,\?]" ""))))
 
 (def unique-char-set
-  (apply s/union (map set (map (fn [str] (clojure.string/replace str #"[\,\?]" "")) up-case-word-list))))
+  (apply clojure.set/union (map set (map (fn [str] (clojure.string/replace str #"[\,\?]" "")) up-case-word-list))))
 
 (count unique-char-set)
 </code></pre></p>

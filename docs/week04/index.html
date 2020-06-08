@@ -79,15 +79,17 @@
 		&lsquo;reduce.&rsquo; To keep things simple, say you need to sum a list of
 		integers. This is how you would do it without using a loop:</p>
 	<p><pre>
-	<code class="Clojure">(def sum (reduce + [1 2 3 12 15 -4 0 18 2005]))</code></pre>
+	<code class="Clojure">(reduce + [1 2 3 12 15 -4 0 18 2005])</code></pre>
 	</p>
-	<p>Maybe you have a list of numbers somewhere in your code and you need the average of those numbers. Here is one way you could do this:</p>
+	<p>Maybe you have a list of numbers somewhere in your code and you need to do other things
+      like find the average of those numbers. Here is an example that uses some sneaky math
+      (and a loop!):</p>
 <p><pre>
 	<code class="Clojure">
 (defn is-multiple? [n m]
   (zero? (mod n m)))
 
-(defn- test-prime [n]
+(defn test-prime [n]
   (loop [i 5 top (Math/sqrt n)]
     (cond
       (> i top) true
@@ -102,30 +104,23 @@
         (is-multiple? n 3)) false
     :else (test-prime n)))
 
-(defn -main []
-  ;Define new list
-  (def test-nums '(13 103 71 701 29 209 1234 2357))
-  (println "Test nums:" test-nums)
+;; Define a new list
+(def test-nums '(13 103 71 701 29 209 1234 2357))
 
-  ;Reduce list to find the sum
-  (def sum (reduce + test-nums))
-  (println "Sum:" sum)
+;; Reduce the list to find the sum
+(reduce + test-nums)
 
-  ;Find the average
-  (def avg (/ (float (reduce + test-nums)) (count test-nums)))
-  (println "Average:" avg)
+;; Find the average (without def'ing the sum)
+(/ (float (reduce + test-nums)) (count test-nums))
 
-  ;Filter list to find primes
-  (def primes (filter is-prime? test-nums))
-  (println "Primes:" primes)
+;; Filter the list to find primes
+(filter is-prime? test-nums)
 
-  ;Map +2 to list
-  (def new-nums (map #(+ 2 %1) test-nums))
-  (println "After mapping +2 to vector:" new-nums)
+;; Map +2 to the list
+(map #(+ 2 %1) test-nums)
 
-  ;Filter new list to find primes
-  (def new-primes (filter is-prime? new-nums))
-  (println "Primes after mapping +2 to vector:" new-primes))
+;; Map and filter combined
+(filter is-prime? (map #(+ 2 %1) test-nums))
   </code>
 </pre>
 </p>

@@ -49,26 +49,23 @@
 	realize that when you are designing solutions in Clojure, how a function accomplishes something is not as important as that it will,
 	and that you can wait to figure out how to complete the function later.</p>
 
-	<p>An example of designing a solution by thinking in functions is the following.</p>
-
-  TODO
-
 	<p>Since Python is a descendant of C and Clojure is not, there are differences between the languages regarding how you declare
 	functions.
 
 	<p><pre>
-<code class="Clojure">;defn means define function
+<code class="Clojure">;; defn means define function
 (defn function-name [params] (
-	;code goes here))</code>
-	</pre></p>
+	;; code goes here
+))
+</code></pre></p>
 
 	<p>Here is an example of defining a simple function printing a greeting and a farewell.</p>
 <p><pre>
 <code class="Clojure">
-(defn hello-to [person-name](
-             (println (str "Hello " person-name))
-             (println (str "Goodbye " person-name))))</code>
-	</pre></p>
+(defn hello-to [person-name]
+  (println (str "Hello " person-name))
+  (println (str "Goodbye " person-name))))
+</code></pre></p>
 	<p>Notice the thinking in functions. Functions are calling functions without worrying about how the
 	functions being called accomplish their task. Here, the function calls are three deep. Figure out what
 three deep means.</p>
@@ -78,17 +75,17 @@ how to accomplish this.</p>
 <p><pre>
 <code class="Clojure">
 (defn hello-to
-  ;if there no parameters are passed to the function
-  ([] ;don't forget the space here.
-   (println "Hello everybody") ;don't forget the space here.
+  ;; if there no parameters are passed to the function
+  ([] ; don't forget the space here.
+   (println "Hello everybody") ; don't forget the space here.
    (println "Goodbye everybody"))
 
-  ;if there is one parameter passed
-  ([person-name] (println (str "Hello " person-name)) ;don't forget the space here.
+  ;; if there is one parameter passed
+  ([person-name] (println (str "Hello " person-name)) ; don't forget the space here.
    (println (str "Goodbye " person-name)))
 
-  ;if there are two parameters passed
-  ([person-name other-person-name] (println (str "Hello " person-name " and " other-person-name)) ;don't forget the space here.
+  ;; if there are two parameters passed
+  ([person-name other-person-name] (println (str "Hello " person-name " and " other-person-name)) ; don't forget the space here.
    (println (str"Goodbye " person-name " and " other-person-name))))</code>
 </pre></p>
 	<p>Do not jump to an unwarranted, mistaken conclusion. You don&rsquo;t have to have definitions for all arities.
