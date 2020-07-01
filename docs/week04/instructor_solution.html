@@ -32,22 +32,26 @@ solution and will not make any changes to your solution.</h2>
                       (apply cartesian-product more))
                 xs)))
 
+    (def flavors1 ["Vanilla" "Chocolate" "Cherry-Ripple"])
+
+    (def flavors2 ["Lemon" "Butterscotch" "Licorice-Ripple"])
+
+    (def all-flavors (concat flavors1 flavors2))
+
     (defn -main []
       (println "Two Lists Results: ")
       (println
         (filter
           #(= (first %) "Chocolate") ; The 1 for the parameter number indicator (%) is not needed since there is only one parameter.
-          (cartesian-product
-             ["Vanilla" "Chocolate" "Cherry-Ripple"]
-            ["Lemon" "Butterscotch" "Licorice-Ripple"])))
+          (cartesian-product flavors1 flavors2)))
       (newline)
       (println "Single List Results: ")
       (println
          (filter
            #(or (= (first %) "Chocolate") (= (last %) "Chocolate"))
-          (cartesian-product
-            ["Vanilla" "Chocolate" "Cherry-Ripple" "Lemon" "Butterscotch" "Licorice-Ripple"]
-            ["Vanilla" "Chocolate" "Cherry-Ripple" "Lemon" "Butterscotch" "Licorice-Ripple"]))))
+          (cartesian-product all-flavors all-flavors))))
+
+    (-main)
 </code></pre></p>
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
