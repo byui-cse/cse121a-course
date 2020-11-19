@@ -143,7 +143,7 @@
 <p><pre>
 	<code class="Clojure">(map #(+ 2 %1) test-nums)
 </code></pre></p>
-<p>The map function is quite flexible. You can accomplish <a href="https://clojuredocs.org/clojure.core/map"> a lot with it</a>,
+<p>The <a href="https://clojuredocs.org/clojure.core/map">map function</a> is quite flexible. You can accomplish  a lot with it,
 but there is yet another common function you can use to make your life easier and avoid nasty, slow looping code.</p>
 </p>
 <h3>Filter</h3>
@@ -154,7 +154,7 @@ but there is yet another common function you can use to make your life easier an
 <p><pre>
 	<code class="Clojure">(def new-primes (filter is-prime? new-nums))
 	</code></pre></p>
-<p>The filter function is <a href="https://clojuredocs.org/clojure.core/filter">also very flexible</a> but the true power of
+<p>The <a href="https://clojuredocs.org/clojure.core/filter">filter function</a> is also very flexible but the true power of
 these functions is using them together.</p>
 <p>Think about how you might write some Python loops to modify everything in a list, filter the results of that update, and
 then use those results to calculate a single answer. That&rsquo;s a lot of looping and a lot of loops to track and maintain. You do
