@@ -51,7 +51,7 @@
 	followed closely by Haskell, so you can expect to see Lisp-ish syntax that is significantly different than what you learned for Python.</p>
 
 <figure>
-  <img src="images/python_clojure_lang_history.png" alt="place holder">
+  <img src="images/python_clojure_lang_history.png" alt="ancestors specific to Python. Modula 3, Pascal, ANSI C, C, B, BCPL. ancestors specific to Clojure. Haskell, Scheme, Lisp. Ancestors common to both languages. Algol 68, Algol 58, Fortran.">
   <figcaption>Figure 1. - The anticedent languages for Python and Clojure (Grady Booch and others).</figcaption>
 </figure>
 
@@ -62,47 +62,68 @@
 		(Java Developer Kit) for your computer. The link leads you to download an installer. Run the installer using the default values the installer suggests. 
 		The JDK includes the Virtual Machine, not a real piece of hardware, that your Clojure code will run on. By leveraging this VM, your clojure code won't need 
 		to be compiled to run on your specific hardware.
-	<h2>Your IDE</h2>
-	<p>The Integrated Development Environment (IDE) you use in this class is <a href="https://sekao.net/nightcode/">Nightcode</a>, a very helpful too.</p>
-	<p>While there are many editors and IDE's that can be used to write Clojure, Nightcode was selected for this class because it doesn't hide the Clojure toolset from you, yet 
-	it makes it much easier to do the write-run-debug cycle that is programming.</p>
-	<p>After you have installed the JDK and Nightcode, run Nightcode. You should now see this.</p>
-	<img src="images/start_up_nightcode.png"/>
-	<p>
-		In the bottom section of the window, you'll see the Clojure REPL (Read-Eval-Print-Loop) running. This is much like the Python REPL so you can type in valid Clojure and execute it 
-		just like you could in the Python REPL.
+	<h2>Development Tools</h2>
+	<p>While there are many editors and IDE's that can be used to write Clojure, it was decided not to hide the Clojure toolset from you. <a href="https://clojure.org/guides/getting_started">Follow the download instructions for your OS 
+	at the clojure.org site</a>. After you complete this task, you are ready to start using Clojure!</p>
+	<h3>Running the REPL</h3>
+		<p>The clj tool is the Clojure REPL (Read-Eval-Print-Loop. This is much like the Python REPL. That means you can type in valid Clojure and execute it 
+		just like you could in the Python REPL. Once your installation is complete, open your terminal app (MacOS and Linux) or your command shell (Windows). From now on, in this class, either of these will be called your shell. Type clj into your shell and hit enter. This should appear in your REPL.
 	</p>
-	<p>As a preview of things to come, let's use the REPL to add together four numbers, 1,2,3, and 4. Type into the REPL the code you see in this image.</p>
-	<img src="images/first_closure_REPL.png"/>
+	<p><pre><code class="Bash">clj
+Clojure 1.10.1
+user=&gt;</code></pre></p>
+	<p>It's fine if there are a few download messages in addition to what's listed here. That's just the toolset updating itself.</p>
+
+	<p>As a preview of things to come, let's use the REPL to add together four numbers, 1,2,3, and 4. Type into the REPL (+ 1 2 3 4) and hit enter. Your REPL will update with the following.</p>
+	<p><pre><code class="Bash">user=&gt;(+ 1 2 3 4)
+10
+user=&gt;</code></pre></p>
 	<p>
-		Here you see the impact of having Lisp as Clojure's strongest ancestor instead of C. Python's + operator is borrowed from and acts much like the + operator in C. Clojure doesn't 
+		In this simple example the impact of having Lisp as Clojure's strongest ancestor instead of C becomes apparent. Python's + operator is borrowed from and acts much like the + operator in C. Clojure doesn't 
 		have a + operator. Instead it has a + function. We'll get into this in detail later, but what you've done in this code is pass multiple parameters, the numbers 1, 2, 3, and 4, to 
 		Clojure's + function. This is, after all, a functional programming language so you can expect it to use functions whenever possible. &#128525
 	</p>
 	<p>Also notice that Clojure doen't have commas seperating the parameters where as Python does. Python borrowed that syntax from C.</p>
+	<p>Any time you want to terminate the REPL, type control-d. The REPL will stop, and you will be back in your terminal.</p>
 <h1>Your First Project</h1>
-
-	<p>In Nightcode, from the <span>Start</span> pulldown menu select <span>Console Application</span>, all the apps in the class will be console apps. You will be presented with 
-		a dialog box asking you to select, or create, a directory to put your project in. You can put this anywhere on your computer that makes sense to you. I'd suggest something like 
-		the documents directory and creating a directory called 'night_code_projects'. Call your project 'first'. Nightcode now looks like this.
-	</p>
-		<img src="images/first_project.png">
-	<p>
-		Ignore, for now, the clj and README.md files. Instead, expand src by clicking on the triangle in front of src. Do the same for the first inside of src. Now click the core.clj file. 
-		You are now seeing how to define a main function much like the one you saw in Python. 
-	</p>
-	<img src="images/first_hello.png">
-	<p>
-		Here Clojure's functional programming is showing. You are calling the defn function and passing it the first parameter which is the name of the function 
-		you are defining. the [] indicate that it has no parameters. The second parameter, surrounded by parenthasis is a call to the print line function. We'll learn 
-		more about functions later, but notice that each time a function is called, the name of the function and its parameters are surounded with parenthasis. This may seem like 
-		weird syntax to you. This is because you learned Python before you learned Clojure. Down't worry. You'll quickly get used to the parenthasis.
-	</p>
-	<p>Run your app by clicking 'Run'. It will take a few seconds to load and compile everything, but soon you'll see "Hello World!" at the bottom of your window.</p>
-	<img src="images/hello_done.png">
+	<p>Using your operating system tools, create a folder to hold all of your work for this class. Inside that folder, create another folder. Call it <kbd>week01</kbd>. Go back into your shell, restarting it if you closed it, and change directories into the <kbd>week01</kbd> folder. You are almost ready for the next step. Keep up the good work. &#128077;</p>
+	<p>Using any text editor of your choice, yes even Visual Studio Code from your Python class would work, create a file 
+	named <kbd>first.clj</kbd>. Make sure you save it in the <kbd>week01</kbd> folder. Into this file enter the following
+	code and save the changes.
+	<p><pre><code class="Clojure">;;A definition for the function hello. This function prints out hello world.
+(defn hello []
+    (print "Hello World!\n"))
+)</code></pre></p>
+<p>Don't get deeply worried about what this code does for right now. You'll learn about these things later in the class.</p>
+<p>You are now ready to run your first Clojure code! In your shell type either <kbd>ls</kbd> (MacOS,Linux) or <kbd>dir</kbd> (Windows). You should see the file <kbd>first.clj</kbd> listed. If not, you need to change directories into the folder you 
+created, <kbd>week01</kbd>. Go back up to those instructions above and try again. After you enter <kbd>ls</kbd> 
+(MacOS,Linux) or <kbd>dir</kbd> (Windows), and see <kbd>first.clj</kbd>, start the REPL using <kbd>clj</kbd>.</p>
+<p><pre><code class="Bash">clj
+Clojure 1.10.1
+user=&gt;</code></pre></p>
+<p>Now enter <kbd>(load-file "first.clj")</kbd> and hit enter. If you put the code requested into the <kbd>first.clj</kbd> 
+	file, the REPLE will update like this.
+</p>
+<p><pre><code class="Bash">user=> (load-file "first.clj")
+#'user/hello
+user=></code></pre></p>
+<p>
+	You are now ready to run the code you wrote. Enter <kbd>(hello)</kbd> and once again press the enter key. Your 
+	REPL updates once again.
+</p>
+<p><pre><code class="Bash">user=> (load-file "first.clj")
+#'user/hello
+user=>(hello)
+Hello World!</code></pre></p>
+<p>
 <h1>Done!</h1>
-<p>Congrats!!! You're all set up and ready to go. If you want to see all the functions that pre-exist as part of Clojure, you can take a look at the <a href="https://clojure.github.io/clojure/clojure.core-api.html">
+<p>Congrats!!! You're all set up and ready to go. If you want to see all the Built-In Functions, BIF's, that pre-exist as part 
+	of Clojure available for you to use, <a href="https://clojure.github.io/clojure/clojure.core-api.html">take a look at the 
 	Clojure API</a>.</p>
+<h1>Appendix</h1>
+<p>There are many IDE's and plugins for text editors available for Clojure. If you prefer, you can explore and experiment 
+with those tools. More than likely, your favorite text editor has a Clojure plugin. These are not required for the 
+course, but if you would like to use them to do things like step-wise debugging, feel free though don't feel like you need to.</p>
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
