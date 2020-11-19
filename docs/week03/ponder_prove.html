@@ -4,28 +4,102 @@
 <html>
 
 <head>
-	<script type="text/javascript">
-		var codeType = "C++"
-	</script>
-	<script src="../../../site/highlight.pack.js"></script>
-	<link rel="stylesheet" href="../../../site/highlight_styles/xcode.css">
-	<link rel="stylesheet" href="../../../site/weekly.css">
-	<script type="text/javascript" src="../../../site/weekly.js"></script>
-	
-
+	          <link rel="shortcut icon" href="https://byui-cse.github.io/Language-Courses/site/images/fav.ico" type="image/x-i        con">
+            <script type="text/javascript">
+             var codeType = "Clojure"
+            </script>
+            <script src="https://byui-cse.github.io/Language-Courses/site/highlight.pack.js"></script>
+            <link rel="stylesheet" href="https://byui-cse.github.io/Language-Courses/site/highlight_styles/xcode.css">
+            <link rel="stylesheet" href="https://byui-cse.github.io/Language-Courses/site/weekly.css">
+            <script type="text/javascript" src="https://byui-cse.github.io/Language-Courses/site/weekly.js"></script>
 </head>
 
 <body onload="fetchSource()">
 <div class="hero-image">
   <div class="hero-text">
-    <h1>CSE 121c: Week 01</h1>
+    <h1>CSE 121a: Week 03</h1>
     <p>Ponder and Prove</p>
   </div>
 </div>
-	<h1>Your Task</h1>
-	<p>Create a desktop video of you using the stepwise debugger in the Eclipse IDE. Show how to use the step-over and step-into features, 
-	along with the mouse-over and variables tab feature.</p>
+  <p>
+      The Greatest Common Divisor (GCD) of integers is well known in math. This
+      method for finding, usually for a pair of numbers, which of their divisors
+      that they have in common is the greatest <a href="https://en.wikipedia.org/wiki/Euclidean_algorithm">dates back to Euclid</a>, and is usually
+      studied early on in a course on algorithms.
+  </p>
 
+  <p>
+      More precisely, the GCD of two nonnegative, not-both-zero integers <i>a</i> and <i>b</i>,
+      denoted <i>gcd(a, b)</i>, is defined as the largest integer that divides both <i>a</i> and <i>b</i>
+      evenly, i.e., with a remainder of zero. As you will learn when you take a
+      course on discrete mathematics, the central fact of numbers exploited by the
+      algorithm that computes the GCD is that
+  </p>
+
+  <p>
+      <i>gcd(a, b) = gcd(b, a % b)</i>,
+  </p>
+
+  <p>
+      where &lsquo;%&rsquo; is the mod operator that returns the remainder when <i>a</i> is divided by <i>b</i>.
+  </p>
+
+  <p>
+      Here is high-level pseudocode for the GCD algorithm:
+  </p>
+
+  <p class="verse">
+      1. Apply repeatedly the equality<br />
+      <br />
+      &#xa0;&#xa0;&#xa0;<i>gcd(a, b) = gcd(b, a % b)</i><br />
+      <br />
+      2. until <i>a</i> % <i>b</i> is equal to 0.<br />
+  </p>
+  <p>
+      Since <i>gcd(n, 0) = n</i>, for any <i>n</i>, the last <i>b</i> (which is also the last non-zero
+      remainder) is the answer &#x2014; the GCD of the original <i>a</i> and <i>b</i>.
+  </p>
+
+  <p>
+      One of the main uses of the GCD function is to convert fractions to lowest
+      terms. This is done by finding the GCD of the numerator and denominator of the
+      fraction, and dividing both by their GCD. It is helpful to trace through this
+      function to get an idea of how it works.
+  </p>
+	<h1>Your Tasks</h1>
+  <p>
+      Your warm-up task is to create in Clojure a GCD tracer by
+      &lsquo;instrumenting&rsquo; (i.e, adding
+      print statements to show the steps) a <i>recursive</i> GCD function.
+  </p>
+
+  <p>
+      Your main task is to use GCDs to prove that a given number is NOT prime, but
+      instead is a prime pretender &#x2014; which means it &lsquo;fools&rsquo; the <i>Fermat Primality
+      Test</i> for every base <b>relatively prime</b> to it. (Look these terms up.)
+  </p>
+
+  <p>
+      Using Clojure functions that you will write, answer for each of the following
+      two numbers, is it prime or is it a prime pretender?
+  </p>
+
+  <p>
+      2279581438334889337
+  </p>
+
+  <p>
+      1041097815469159199
+  </p>
+  <section>
+      <h3>Review</h3>
+      <h4>After completing the previous steps:</h4>
+      <ol>
+          <li>Review one of the many <a href="https://byui-cse.github.io/cse121a-course/week03/instructor_solution.html">possible solutions</a> for this task,</li>
+          <li>Compare and contrast your code with the possible solutions&rsquo; code, and</li>
+          <li>Make note of any improvements you could make for future tasks.</li>
+      </ol>
+  </section>
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 </body>
 </html>

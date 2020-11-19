@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://byui-cse.github.io/Language-Courses/site/highlight_styles/xcode.css">
     <link rel="stylesheet" href="https://byui-cse.github.io/Language-Courses/site/weekly.css">
     <script type="text/javascript" src="https://byui-cse.github.io/Language-Courses/site/weekly.js"></script>
-	
+
 </head>
 
 <body onload="fetchSource()">
@@ -22,24 +22,50 @@
     <p>Ponder and Prove</p>
   </div>
 </div>
-	<h1>Your Task</h1>
-	<p>Run-length Encoding (RLE) is an interesting type of compression for data files. Some files, like bitmap images, have large areas
-	 where the numbers representing the image don't change (imagine an image with large numbers of big black areas in it). 
-	 The idea behind RLE is this: if there are 100 fives's in a row, why keep all the fives? Instead, let's replace 99 of those 
-	 fives with a 100. Then the pair 100 5 can represent the 100 fives in a lot less disk space. There are many different RLE 
-	 algorithms. You should feel free to explore those used to compress files, but your task is more interesting than that.</p>
-	 <p>The set of <a href="https://en.wikipedia.org/wiki/Natural_number">Natural numbers</a> is infinite. Here is a mathmatical 
-	 	representation of a RLE endcoded finite 
-	 <a href="https://www.mathsisfun.com/algebra/sequences-series.html">sequence</a> of numbers beginning with 2 
-	 using a unique and interesting version of Run-length Encoding.</p>
-	 <p>RLEPRIMES=(1,1,0,1,0,1,3,1,0,1,3,1,0,1,3,1,5,1,0,1,5,1,3,1,0,1,3,1,5,1,5,1,0,1,5,1,3,1,0,1,5,1,3,1,5,1,7,1,3)</p>
-	 <p>The RLE algorithm used to produce this set of numbers is different than that used for images. In it, a 1 
-	 represents a prime number, a 0 represents an isolated composite number, and any other number found in the sequence 
-	 represents how many composite numbers there are in a row before the next prime number.</p>
-	<p>Use recursion and if/when or if-let/when-let BIF's to write a function called decode_prime_list that will decode any list passed to it as a parameter that is 
-	encoded using this interesting version of RLE. Your function must produce the list of prime numbers contained in 
-	RLENUMS or any similarly encoded list. The result list must be ordered from least to greatest.</p>
+<h1>Introduction</h1>
+	<p>Run-Length Encoding (RLE) is an interesting type of compression for data
+	 files. Some files, like bitmap images, have large areas where the numbers
+	 representing the image don&rsquo;t change (imagine an image with large numbers of
+	 big black areas in it). The idea behind RLE is this: if there are 100 fives
+	 in a row, why keep all the fives? Instead, let us replace 99 of those fives
+	 with a 100. Then the pair 100 5 can represent the 100 fives in a lot less
+	 disk space. There are many different RLE algorithms, and you should feel free
+	 to explore those used to compress files, but your task is more interesting
+	 than that. That&rsquo;s because you are going to compress a subset of an
+	 infinite set!</p>
 
+	<p>The set of <a href="https://en.wikipedia.org/wiki/Natural_number">Natural numbers</a>
+    is infinite. Here is a mathmatical representation of an RLE-encoded finite
+    <a href="https://www.mathsisfun.com/algebra/sequences-series.html">sequence</a>
+    of numbers beginning with 2 using a unique and interesting version of Run-Length Encoding:</p>
+
+   <p>RLEPRIMES=(1,1,0,1,0,1,3,1,0,1,3,1,0,1,3,1,5,1,0,1,5,1,3,1,0,1,3,1,5,1,5,1,0,1,5,1,3,1,0,1,5,1,3,1,5,1,7,1,3)</p>
+
+	 <p>The RLE algorithm used to produce this set of numbers is different than
+	 that used for images. In it, a 1 represents a prime number, a 0 represents an
+	 isolated composite number, and any other number found in the sequence
+	 represents how many composite numbers there are in a row before the next
+	 prime number.</p>
+
+	 <h1>Your Task</h1>
+	 <p>
+       Use recursion and if/when or if-let/when-let BIFs to write a function
+       called decode_prime_list that will decode any list passed to it as
+	     a parameter that is encoded using this interesting version of RLE. Your
+	     function must produce the list of prime numbers contained in RLEPRIMES or
+	     any similarly encoded list. The result list must be ordered from least to
+	     greatest.
+   </p>
+
+   <section>
+       <h3>Review</h3>
+       <h4>After completing the previous steps:</h4>
+       <ol>
+           <li>Review one of the many <a href="https://byui-cse.github.io/cse121a-course/week05/instructor_solution.html">possible solutions</a> for this task,</li>
+           <li>Compare and contrast your code with the possible solutions&rsquo; code, and</li>
+           <li>Make note of any improvements you could make for future tasks.</li>
+       </ol>
+   </section>
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 </body>
 </html>

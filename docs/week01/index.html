@@ -4,7 +4,7 @@
 <html>
 
 <head>
-	<link rel="shortcut icon" href="https://byui-cse.github.io/Language-Courses/site/images/fav.ico" type="image/x-i        con">
+	<link rel="shortcut icon" href="https://byui-cse.github.io/Language-Courses/site/images/fav.ico" type="image/x-icon">
     <script type="text/javascript">
                  var codeType = "Clojure"
     </script>
@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://byui-cse.github.io/Language-Courses/site/highlight_styles/xcode.css">
     <link rel="stylesheet" href="https://byui-cse.github.io/Language-Courses/site/weekly.css">
     <script type="text/javascript" src="https://byui-cse.github.io/Language-Courses/site/weekly.js"></script>
-	
 
 </head>
 
@@ -25,38 +24,54 @@
 </div>
 	<h1>The Why of Clojure</h1>
 	<h3>Some Background</h3>
-	<p>Clojure is a dialect of Lisp, a language designed in 1958 and still in use. Because Lisp was created so long ago, there are 
-	concepts in computing that are now common, but didn't exist way back then. For example, parallel computing was not a thing so Lisp 
-	doesn't have parallel computing 'baked in' from the beginning. It has been added, but 
-	since it is added on, it can be somewhat clunky. Clojure, on the other hand, was designed to leverage what is good about Lisp and the parallelism available in the Java Virtual 
-		Machine. Clojure was also designed to be a functional programming language, making parallel programming safer and easier. 
+	<p>Clojure is a dialect of Lisp, a language designed in 1958 and still in use.
+	Because Lisp was created so long ago, there are concepts in computing that are
+	now common, but didn&rsquo;t exist way back then. For example, parallel
+	computing was not a thing so Lisp doesn&rsquo;t have parallel computing
+	&lsquo;baked in&rsquo; from the beginning. It has been added, but since it is
+	added on, it can be somewhat clunky. Clojure, on the other hand, was designed
+	to leverage what is good about Lisp and the parallelism available in the Java
+	Virtual Machine. Clojure was also designed to be a functional programming
+	language, making parallel programming safer and easier.</p>
+	<p>
+		Clojure being one of many functional programming language means that, in
+		Clojure, collections of data and individual pieces of data are immutable. In
+		other words, there are no variables in Clojure. While this may come as a
+		shock to you because of your Python background, it is a completely valid way
+		of writing very good code. It also means that you can write parallel code
+		without creating the two huge, common problems in parallel code written for
+		languages that have variables, <a href="https://stackoverflow.com/questions/34510/what-is-a-race-condition">race conditions</a>
+		and <a href="https://stackoverflow.com/questions/34512/what-is-a-deadlock">cross or dead-locks</a>. Thankfully, Clojure and other functional
+		programming languages don&rsquo;t have variables, and so it&rsquo;s impossible to create either of these problems.
 	</p>
 	<p>
-		Clojure being one of many functional programming language means that, in Clojure, collections of data and individual pieces of data are immutable. In other words, 
-		there are no variables in Clojure. While this may come as a shock to you because of your Python background, it is a completely valid 
-		way of writing very good code. It also means that you can write parallel code without creating the two huge, common problems in  
-		parallel code written for languages that have variables, <a href="https://stackoverflow.com/questions/34510/what-is-a-race-condition">race conditions</a> 
-		and <a href="https://stackoverflow.com/questions/34512/what-is-a-deadlock">cross or dead-locks</a>. Thankfully, Clojure and other functional 
-		programming languages don't have variables, and so it's impossible to create either of these problems.
-	</p>
-	<p>
-		Another advantage of being a functional programming language is that functions are and can be treated just like data. You can pass a function as 
-		a parameter, you can return a function from a call to a different function, and many other very cool things. This means that functions like map, filter, 
-		and reduce, you saw these in Python, are no different than any other function you can create, and you don't need that weird lambda keyword that Python has. Also, since functions 
-		are data, you can put functions in lists and maps. When done well, this makes your code extremely flexible and powerful.
-	</p>
+		Another advantage of being a functional programming language is that
+		functions are and can be treated just like data. You can pass a function as
+		a parameter, you can return a function from a call to a different function,
+		and many other very cool things. This means that functions like map, filter,
+		and reduce, you saw these in Python, are no different than any other
+		function you can create, and you don&rsquo;t need that weird lambda keyword
+		that Python has. Also, since functions are data, you can put functions in
+		lists and maps. When done well, this makes your code extremely flexible and
+		powerful.</p>
 	<h3>Python and Clojure are Related</h3>
-	<p>Take a look at Figure 1. It shows the ancestery of both Clojure and Python. Since Clojure and Python share some ancestory, you can expect to see echos
-	of things in Python in Clojure. An example of this is the concept of a range. However, Python is not Clojure's only ancester, nor its most significant one. The strongest contributor is Lisp, 
-	followed closely by Haskell, so you can expect to see Lisp-ish syntax that is significantly different than what you learned for Python.</p>
+	<p>Take a look at Figure 1. It shows the ancestry of both Clojure and Python.
+	Since Clojure and Python share some ancestry, you can expect to see echos of
+	things in Python in Clojure. An example of this is the concept of a range.
+	However, Python is not Clojure&rsquo;s only ancestor, nor its most significant
+	one. The strongest contributor is Lisp, followed closely by Haskell, so you
+	can expect to see Lisp-ish syntax that is significantly different than what
+	you learned for Python.</p>
 
 <figure>
+
   <img src="images/python_clojure_lang_history.png" alt="ancestors specific to Python. Modula 3, Pascal, ANSI C, C, B, BCPL. ancestors specific to Clojure. Haskell, Scheme, Lisp. Ancestors common to both languages. Algol 68, Algol 58, Fortran.">
   <figcaption>Figure 1. - The anticedent languages for Python and Clojure (Grady Booch and others).</figcaption>
 </figure>
 
-<h1>Installations</h1>
+<h1>Installation</h1>
 	<h2>The Virtual Machine</h2>
+<<<<<<< HEAD
 
 	<p>If it isn't already installed on your machine, start by installing <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html"> the JDK</a> 
 		(Java Developer Kit) for your computer. The link leads you to download an installer. Run the installer using the default values the installer suggests. 
@@ -124,7 +139,6 @@ Hello World!</code></pre></p>
 <p>There are many IDE's and plugins for text editors available for Clojure. If you prefer, you can explore and experiment 
 with those tools. More than likely, your favorite text editor has a Clojure plugin. These are not required for the 
 course, but if you would like to use them to do things like step-wise debugging, feel free though don't feel like you need to.</p>
-
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 </body>
