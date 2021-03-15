@@ -58,12 +58,12 @@
 	    do with a list. Here is an example of making a vector and eventually
 	    getting the 3<sup>rd</sup> item out.</p>
 <p><pre>
-<code class="Clojure">(def vec [0 -1 345 18])
-(vec 3)</code></pre>
+<code class="Clojure">(def my-vec [0 -1 345 18])
+(my-vec 3)</code></pre>
 	</p>
-	<p>When you run this code, (vec 3) returns 18. That&rsquo;s because Clojure
+	<p>When you run this code, (my-vec 3) returns 18. That&rsquo;s because Clojure
 	follows a 0-based indexing scheme like most other languages. To get the value
-	345, you would write (vec 2) and to get the &lsquo;first&rsquo; value you would write (vec 0).</p>
+	345, you would write (my-vec 2) and to get the &lsquo;first&rsquo; value you would write (my-vec 0).</p>
 	<p>If you look back again to last week&rsquo;s lesson, you will discover
 	that when you declare the parameters of a function, you do so using a vector.</p>
 	<p>Clojure includes some important functions that you can apply to vectors.
