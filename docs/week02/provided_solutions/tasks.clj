@@ -1,5 +1,5 @@
-;; @author Rick Neff
-;; @copyright 2020 Rick Neff licensed under the <a>
+;; @author Lee Barney
+;; @copyright 2021 Lee Barney licensed under the <a>
 ;;        rel="license"
 ;;        href="http://creativecommons.org/licenses/by/4.0/"
 ;;        target="_blank">
