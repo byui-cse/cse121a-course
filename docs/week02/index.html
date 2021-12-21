@@ -20,7 +20,7 @@
 		</div>
 	</div>
 	<h1>Similarities and Differences</h1>
-	<h3>Operators and Operators</h3>
+	<h3>Operators and Functions</h3>
 	<p>
       Remember, Python has C as one of its ancestors. Because of this, it is not
 		  shocking to find out that Python inherited many of its operators directly
@@ -178,7 +178,6 @@ age = 4.2</code>
 			<li>String</li>
 		</ul>
 	</p>
-	</pre>
 	<p>
 		  Be careful. It is tempting to think, &ldquo;Hey...those floating point
 	    numbers look like they could hold bigger integers than an integer can. Maybe
@@ -190,6 +189,23 @@ age = 4.2</code>
 	    try to represent, the higher the probability that adding 1 to that number will
 	    result in the original number.
   </p>
+  <h4>Combining Operators</h4>
+  <p>
+  	As described above, Clojure mathematical and logical operators are not <a href="https://perldoc.perl.org/perlglossary#infix" target="_blank">infixes</a> like they are in Python. Whereas in Python you may have written code like this,
+  		<pre>
+<code class="Python">sum = 3+5+7+23
+average = sum/4</code>
+	</pre>
+	to calculate an average, when following Clojure style you do not create intermediate variables. Instead you embed the use of one operator function inside the other. Here is the same code in Clojure and Clojure style. Notice the complete lack of variables, even defining the result as <kbd>average</kbd> is missing.
+
+	<pre>
+<code class="Clojure">(/ (+ 3 5 7 23) 4)</code>
+	</pre>
+  </p>
+  <p>
+  	When writing Clojure in Clojure style, you embed functions inside of functions a lot and you avoid making intermediate variables when ever possible. This may seem strange at first, but people quickly adjust as they practice more and more. After all, there is no rule that says 'The Python Way' is the only or right way. &#128513; Language is a flexible tool.
+  </p>
+
 	<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 </body>
 </html>
