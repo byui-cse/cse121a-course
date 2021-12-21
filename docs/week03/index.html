@@ -119,18 +119,35 @@ how to accomplish this.</p>
    (if (= n 0) accumulator
      (recur (dec n) (* accumulator n)))))</code></pre>
 	</p>
+	<p>
+		Notice that the <kbd>if</kbd> function has three parameters, the condition, the when true operation, and the when false operation. Each of these consists of one value, <kbd>accumulator</kbd>, when <kbd>factorial</kbd> is done calculating, or a single, further function call, <kbd>recur</kbd>.
+	</p>
+	<p>
+		For those times when you need to do more than one thing, either in a true or false condition, the <kbd>do</kbd> function is your friend. It can have a theoretically infinite set of parameters, each of which is the value of another function. If I was going to both print out the current value of accumulator and use <kbd>recur</kbd> in the <kbd>factorial</kbd> function's false condition branch above. I would use the <kbd>do</kbd> function as described below.
+	</p>
+	<p><pre>
+	<code class="Clojure">(defn factorial
+  ([n] (factorial n 1))
+  ([n accumulator]
+   (if (= n 0) accumulator
+     (do 
+        (println accumulator )
+        (recur (dec n) (* accumulator n))))))</code></pre>
+	</p>
+	<p>
+		The value of the <kbd>do</kbd> function is the value of the last function called. In this situation the value of <kbd>do</kbd> is the value of the <kbd>recur</kbd> function. Adding print statements, like in the code above, in order to show computational progress is called instrumentation.
+	</p>
 	<h3>Bringing it All Together</h3>
 	<p>Since you are an embryonic programmer and engineer, it is important that you develop
-		<a href="http://clojure-doc.org/articles/language/functions.html"> a more complete and more technical understanding of Clojure functions</a>
-		to prepare yourself for both your career and future classes. Explore beyond what you will learn
-		in this class. That is part of being a professional.
+		<a href="http://clojure-doc.org/articles/language/functions.html" target="_blank"> a more complete and more technical understanding of Clojure functions</a>
+		to prepare yourself for both your career and future classes. Explore beyond what you will learn as part of this reading. That is part of being a professional. You will also need to know more than presented here as you use Clojure in subsequent courses. This course is only supposed to help you gain a foundation so you can explore further in a more self-sufficient way.
 	</p>
-	<p> Now that you&rsquo;ve had an initial exposure to functions, you should go back to <a href="../week02/index.html">Week 2 Material</a>
+	<p> Now that you&rsquo;ve had an initial exposure to functions, you should go back to <a href="../week02/index.html" target="_blank">Week 2 Material</a>
 	and take a look at the functions that are used in Clojure instead of operators. Take a cut at how you might have defined each of those functions
-	if you had written Clojure. This will help you with your &lsquo;thinking in functions&rsquo; ability.</p>
+	if you had written them yourself. This will help you with your &lsquo;thinking in functions&rsquo; ability.</p>
 	<p>
 		You will be using functions for all the rest of the weeks you are in this class. Next week, you will
-		be using functions and learning more about them.
+		be using and learning about even more Built-In Functions, BIFs.
 	</p>
 
 
