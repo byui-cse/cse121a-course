@@ -44,108 +44,49 @@
     <p>Ponder and Prove</p>
   </div>
 </div>
-	<h1>Your Two Tasks</h1>
+	<h1>Tasks</h1>
 
-  <h2>Rational number representation</h2>
+  <h2>Using Variables and Mathematical Operators</h2>
 
   <p>
-      One of the problems you run into is that computers are really bad at
-      representing numbers with decimal points, and you really can&rsquo;t trust them.
+      Define a function called \(exercise-math\). In this function, define the variables variables \(x, y\text{ and } z\). Then write the Clojure versions of the list of mathematical functions below and, using the println function you saw last week, print the value of each calculation.
   </p>
-
   <p>
-      This task is intended to help you start making this transition in your thinking.
+    \[\begin{align*}
+    &x+y+z\\
+    &xyz\\
+    &x\div y\div z\\
+    &x^2+3y+z\\
+    &z^x+x^z\\
+    &\frac{z}{y}+x\\
+    &xyz+1\\
+    &xyz-1
+    \end{align*}\]
   </p>
-  <h3>The Task</h3>
+  <h3>Using Logical Operators</h3>
   <p>
-      All rational numbers where the numerators and denominators do not have any
-      common factors (reduced to lowest terms) have a repeating sequence of digits
-      (called the period) after the decimal point.
+     Define a function called \(exercise-logic\). In this function, define the variables variables \(a, b\text{ and } c\) as numbers. Then write the Clojure versions of the list of mathematical comparisons below and, using the println function you saw last week, print the value of each comparison.
   </p>
-
+    \[\begin{align*}
+    &a>b\\
+    &b>a\\
+    &a < b\\
+    &b < c\\
+    &c\ge c\\
+    &a = c\\
+    &a\le b\\
+    &a < b \land b > c\text{ (in the context of logic, }\land\text{ means 'and'})\\
+    &a < b \lor b > c\text{ (in the context of logic, }\lor\text{ means 'or')}
+    \end{align*}\]
   <p>
-      Using numbers of your choice of size less than 1000, find five rational numbers
-      whose float versions do not match Wolfram-Alpha&rsquo;s representation of that number.
-      Also, find five that do match.
+     
   </p>
-  <h2>Permutations and combinations of strings</h2>
-  <p>
-      Computer scientists often have to deal with large data sets that are generated
-      by combinations of simpler things.
-  </p>
-
-  <p>
-      In machine learning we often encounter the strange fascination of grappling
-      with large data sets that we would like to classify into smaller, more
-      comprehensible sets. Generating decision trees is one method that has been
-      employed to good advantage. However, decision trees can be large and very
-      complex, thus hard to deal with. Research is ongoing into discovering
-      efficient methods for &ldquo;pruning&rdquo; and thus shrinking these data structures to a
-      more manageable size.
-  </p>
-
-  <p>
-      Consider IBM&rsquo;s Deep Blue chess program, whose capability of
-      evaluating 200 million positions per second was accomplished mainly
-      through brute force computer power. Beating world champion Gary Kasparov
-      in 1997 was its main claim to fame, though it had nothing powering it that
-      remotely resembled machine learning artificial intelligence. That is 21<sup>st</sup>
-      century technology!
-  </p>
-
-  <p>
-      You are likely going to encounter similar seemingly impossible tasks in your
-      computer science career, so why not start getting some practice now?
-  </p>
-  <h3>The Task</h3>
-
-  <p>
-      If you were to write some code that would generate all the possible anagrams of
-      &ldquo;asdf&rdquo;, how many answers would you have to look at to find all the English words?
-  </p>
-
-  <p>
-      In Clojure you can divide up a string into individual characters using this code:
-  </p>
-
-  <code class="Clojure">
-    (def chars (seq (char-array "asdf")))
-  </code>
-
-  <p>
-      You can join them back together using join:
-  </p>
-
-  <code class="Clojure">
-      (clojure.string/join chars)
-  </code>
-
-  <p>
-      In between you could rearrange the characters to join them back as a different word.
-      Feel free to explore how you would do that, but your assignment here is to calculate
-      how many &ldquo;permutations&rdquo; (google it) there are.
-  </p>
-
-  <p>
-      Use the formula \(_{n}{}P_{k} \equiv \frac{n!}{(n-k)!}\)
-  </p>
-
-  <p>
-      where n is the number of characters in the whole string, and k is the number
-      of characters in the generated words. Your task is to write one line of code
-      that calculates how many three-character strings you have to look through to
-      find all recognizable words if the original string is the following short
-      phrase:
-  </p>
-
-  <p>
-      <b><i>Facetiously speaking, what is special about May the fourth?</i></b>
   </p>
   <section>
       <h3>Review</h3>
       <h4>After completing the previous steps:</h4>
       <ol>
-          <li>Review one of the many <a href="https://byui-cse.github.io/cse121a-course/week02/instructor_solution.html">possible solutions</a> for this task,</li>
+          <li>Review one of the many <a href="https://byui-cse.github.io/cse121a-course/week02/provided_solutions.zip">possible solutions</a> for this task,</li>
           <li>Compare and contrast your code with the possible solutions&rsquo; code, and</li>
           <li>Make note of any improvements you could make for future tasks.</li>
       </ol>
